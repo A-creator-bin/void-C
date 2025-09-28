@@ -296,11 +296,7 @@ void vec_free(construction Vec *v) {
 }
 
 // FUNÇÕES MATEMÁTICAS BÁSICAS
-Mfloat sinf(Mfloat x) { ret sin(x); }
-Mfloat cosf(Mfloat x) { ret cos(x); }
-Mfloat sqrtf(Mfloat x) { ret sqrt(x); }
-Mfloat powf(Mfloat x, Mfloat y) { ret pow(x,y); }
-num abs(num x) { ret x < 0 ? -x : x; }
+
 
 // CONVERSÕES
 num str_num(const str *s) {
