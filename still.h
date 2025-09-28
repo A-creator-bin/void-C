@@ -411,6 +411,8 @@ construction BinFile {
     void *data;
     size_t size;
 };
+typedef struct BinFile BinFile;
+
 
 BinFile read_bin(const str *nome) {
     BinFile f = {NULL,0};
@@ -435,18 +437,7 @@ void free_bin(BinFile *f) {
 // ------------------- CAMADA 4: ERGONOMIA -------------------
 
 // ifnot(cond) → if (!(cond))
-#define ifnot(cond) if (!(cond))
 
-// forever → while(1)
-#define forever while(1)
-
-// foreach(i, max) → for(num i = 0; i < max; i++)
-#define foreach(i, max) for(num i=0; i<(max); i++)
-
-// mini módulo: import de outro header still
-#define import(file) \
-    _Pragma("GCC system_header") \
-    #include #file
 
 // dump simples de vetor de nums
 void dump_vec(construction Vec *v, const str *name) {
