@@ -256,46 +256,7 @@ num inputln(str *buffer, size_t tamanho) {
     do { if (!(cond)) { errors(msg); end(1); } } while (0)
 
 // formatador simples: só suporta %d, %s, %c
-void print(const str *fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    for (const str *p = fmt; *p; p++) {
-        if (*p == '%' && *(p+1)) {
-            p++;
-            if (*p == 'd') {
-                num v = va_arg(args, num);
-                char buf[32];
-                num len = 0;
-                if (v == 0) buf[len++] = '0';
-                else {
-                    num tmp = v, neg = 0;
-                    if (tmp < 0) { neg = 1; tmp = -tmp; }
-                    char rev[32]; num r = 0;
-                    while (tmp > 0) { rev[r++] = '0' + (tmp % 10); tmp /= 10; }
-                    if (neg) buf[len++] = '-';
-                    while (r--) buf[len++] = rev[r];
-                }
-                buf[len] = '\0';
-                output(buf);
-            } else if (*p == 's') {
-                const str *s = va_arg(args, const str*);
-                output(s);
-            } else if (*p == 'c') {
-                char c = (char)va_arg(args, int);
-                char buf[2] = {c, '\0'};
-                output(buf);
-            } else {
-                output("%");
-                char tmp[2] = {*p, '\0'};
-                output(tmp);
-            }
-        } else {
-            char tmp[2] = {*p, '\0'};
-            output(tmp);
-        }
-    }
-    va_end(args);
-}
+
 
 // ------------------- CAMADA 2: ESTRUTURAS E MATEMÁTICA -------------------
 
