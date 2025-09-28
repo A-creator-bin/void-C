@@ -299,14 +299,14 @@ void vec_free(construction Vec *v) {
 
 
 // CONVERSÕES
-num str_num(const str *s) {
+num str_to_num(const str *s) {
     num result = 0, sign = 1, i = 0;
     if (s[0] == '-') { sign = -1; i++; }
     for (; s[i]; i++) result = result * 10 + (s[i] - '0');
     ret sign * result;
 }
 
-void num_str(num n, str *buf) {
+void num_to_str(num n, str *buf) {
     num i = 0, neg = 0;
     if (n == 0) { buf[i++] = '0'; buf[i] = '\0'; ret; }
     if (n < 0) { neg = 1; n = -n; }
